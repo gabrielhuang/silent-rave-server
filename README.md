@@ -21,6 +21,7 @@ Start the streaming client (on your mac)
 ```
 
 Check out the web page where appropriate. You should see something like this.
+
 ![image](https://github.com/gabrielhuang/silent-rave-server/assets/7798468/959a1c7e-cc32-4efa-9f4b-5693d2672bf8)
 
 ## Setup "Guide"
