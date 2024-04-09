@@ -3,12 +3,12 @@
 This repo contains the necessary tooling for organizing a silent rave, bring-your-own-device style, everyone with their own headphones.
 - FastAPI + Uvicorn server streaming live music through HLS protocol.
 - NGINX reverse proxy to better serve index.html and HLS files/playlist
-- Mac Client for forwarding all live audio from BlackHole to the server. Audio is uploaded through HTTP.
+- Mac Client for forwarding all live audio from BlackHole (or any loopback device) to the server. Audio is uploaded through HTTP.
 
 Last time, I hosted everything on a Google Cloud Compute Engine instance with something like 4GB ram and 4 CPUs.
 Note, for some reason audio is broken when directly attempting to read the loopback device from ffmpeg. Instead, reading the audio from SOX and piping to ffmpeg through stdout works!
 
-## Launch the server
+## How to use?
 
 Start the server (from cloud instance)
 ```
@@ -19,6 +19,8 @@ Start the streaming client (on your mac)
 ```
 ./stream-from-mac.sh
 ```
+
+Play music from any source: YouTube, Spotify, Ableton Live, your DJ software. Make sure to select the Blackhole 2ch output device.
 
 Check out the web page where appropriate. You should see something like this.
 
