@@ -8,11 +8,29 @@ This repo contains the necessary tooling for organizing a silent rave, bring-you
 Last time, I hosted everything on a Google Cloud Compute Engine instance with something like 4GB ram and 4 CPUs.
 Note, for some reason audio is broken when directly attempting to read the loopback device from ffmpeg. Instead, reading the audio from SOX and piping to ffmpeg through stdout works!
 
-## Instructions for Setting up the Silent Rave
+## Launch the server
+
+Start the server (from cloud instance)
+```
+./run-server.sh
+```
+
+Start the streaming client (on your mac)
+```
+./stream-from-mac.sh
+```
+
+Check out the web page where appropriate. You should see something like this.
+
+## Setup "Guide"
+
+The following are more notes than an actual guide to set everything up.
+
 - Install BlackHole driver
 - Create a multi output device
 - Install Pyaudio.
 - Install sox
+
 
 ```bash
 brew install portaudio
@@ -33,6 +51,8 @@ SSH to gogole cloud
 ```
 gcloud compute ssh --zone "northamerica-northeast1-a" "silent-rave" --project "naivepsychology-22c0e"
 ```
+
+Make sure to configure HTTP ports correctly! (VPC network section)
 
 Find the device name on mac (Blackhole 2ch?)
 ```
