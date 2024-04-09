@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Black Yack Silent Disco</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <style>
+        .orbitron-one {
+        font-family: "Orbitron", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+        }
+        body {
+            background-color: black;
+            color: white;
+            font-family: "Orbitron", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+        h1 {
+            font-family: "Orbitron", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            color: #ff7903;
+        }
+    </style>
+</head>
+<body>
+    <h1>welcome to Black Yack's first silent disco</h1>
+    <audio id="audioPlayer" controls></audio>
+    <script>
+	var SERVER_URL = 'http://35.215.28.190'
+        var audioPlayer = document.getElementById('audioPlayer');
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(SERVER_URL + '/static/hls/output.m3u8');
+            hls.attachMedia(audioPlayer);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                audioPlayer.play();
+            });
+        } else if (audioPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+            audioPlayer.src = SERVER_URL + '/static/hls/output.m3u8';
+            audioPlayer.addEventListener('loadedmetadata', function() {
+                audioPlayer.play();
+            });
+        }
+    </script>
+    <p style="color: #ff7903">If the music stops for some reason, REFRESH THE PAGE, press PLAY and SKIP TO END OF TRACK once. If it doesn't work when you turn off your screen make sure you use Chrome or Safari, Open In Browser, and deactivate desktop mode.</p>
+    <p>Click on this <a href="https://open.spotify.com/playlist/6uVDURe5qgCLb5SUikjt0o?si=5bcbf7ab9a27449c">link</a> to add songs to the shared playlist</p>
+    <p>Show this QR code to the newcomers to invite them to the live stream.</p>
+    <img src="/static/img/qr-code.png" style="width: 100%"></img>
+</body>
+</html>

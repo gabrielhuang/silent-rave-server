@@ -1,0 +1,2 @@
+#!/bin/bash
+sox -t coreaudio "BlackHole 2ch" --buffer 2048 -t wav - | ffmpeg -threads 8 -i - -c:a aac -b:a 128k -ar 44100 -bufsize 512 -vn -hls_time 5 -hls_list_size 4 -hls_flags delete_segments -hls_segment_filename 'http://35.215.28.190:8000/upload/hls/file_%09d.ts' -method PUT 'http://35.215.28.190:8000/upload/hls/output.m3u8'
